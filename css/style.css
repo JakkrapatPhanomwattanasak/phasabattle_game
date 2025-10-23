@@ -1,0 +1,106 @@
+:root{
+  --paper:#d7c2a1; --paper-deep:#c2a67f; --paper-dark:#8a6b47; --ink:#2a2016;
+  --accent:#00e1b4; --accent2:#00b4ff; --danger:#ff5f5f;
+  --panel:rgba(40,30,20,.86); --stroke:#4a3a28; --text:#1d150c; --text-invert:#fff;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;color:var(--text);font-family:'Changa One', cursive;overflow:hidden;
+  background:
+    radial-gradient(80% 60% at 50% 30%, rgba(255,255,255,.35), rgba(0,0,0,0) 60%),
+    linear-gradient(180deg, #eadcc3 0%, #d7c2a1 45%, #c7af89 85%);
+}
+
+/* Screens */
+.screen{position:fixed;inset:0;display:none}
+.screen.active{display:block}
+.menu-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.25;filter:grayscale(.1) contrast(1.05)}
+.menu-center{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:14px}
+.brand{color:#513c25;margin:0;text-shadow:0 2px 0 #f3e6cf}
+.brand.big{font-size:64px}
+.menu-buttons{display:grid;gap:10px}
+.menu-btn{
+  min-width:240px;padding:12px 18px;border-radius:12px;border:1px solid var(--stroke);
+  background:linear-gradient(180deg,#f3e6cf,#e5d2b2);color:#3b2b1a;cursor:pointer;font-size:18px;box-shadow:0 4px 0 #b9976e
+}
+.menu-btn.primary{background:linear-gradient(180deg,#ffd27a,#ffc257);box-shadow:0 4px 0 #d19a3e}
+.menu-btn:hover{filter:brightness(1.05)}
+.credit{color:#6d5942;font-size:14px}
+
+/* Settings */
+.settings{
+  background:rgba(255,244,226,.92);
+  border:2px solid #c2a67f;padding:14px;border-radius:14px;display:grid;gap:10px;min-width:360px;
+  box-shadow:0 10px 20px #0002, inset 0 0 0 3px #f6ead3
+}
+.settings label{display:flex;justify-content:space-between;gap:10px;align-items:center;color:#3e2f1f}
+.settings select,.settings input{background:#f6ead3;color:#2a2016;border:1px solid #b89367;border-radius:8px;padding:6px 8px}
+
+/* Game */
+#game{position:fixed;inset:0;width:100vw;height:100vh}
+
+/* HUD */
+.hud.top-right{position:fixed;top:10px;right:10px;display:flex;gap:8px}
+.hud-chip{background:rgba(255,244,226,.9);border:1px solid #b89367;padding:6px 10px;border-radius:10px;color:#3b2b1a;text-shadow:0 1px 0 #fff4e2}
+
+/* Floating controls */
+.floating-controls{position:fixed;bottom:14px;right:14px;display:flex;gap:8px}
+.btn{
+  padding:10px 14px;border-radius:12px;border:1px solid #b89367;
+  background:linear-gradient(180deg,#ffe8b7,#ffd88f);color:#3b2b1a;cursor:pointer;box-shadow:0 3px 0 #c79e62
+}
+.btn.primary{background:linear-gradient(180deg,#b0f0ff,#7bdcff);border-color:#5ec7ef}
+
+/* Dock */
+.dock{position:fixed;left:10px;bottom:10px;display:flex;gap:8px}
+.dock .card{
+  display:flex;align-items:center;gap:8px;background:rgba(255,244,226,.9);
+  border:1px solid #b89367;padding:8px 10px;border-radius:12px;cursor:pointer;box-shadow:0 2px 0 #c79e62
+}
+.dock .card.active{outline:3px solid #7bdcff}
+.dock img{width:40px;height:40px;object-fit:contain}
+
+/* Toast — เกือบชิดขอบบน */
+.toast{
+  position:fixed;left:50%;
+  top:6vh;                       /* ขยับได้ 4–10vh ตามชอบ */
+  transform:translateX(-50%);
+  background:
+    radial-gradient(120% 90% at 30% 10%, rgba(255,255,255,.5), rgba(0,0,0,0) 50%),
+    repeating-linear-gradient(-10deg, #f8edd4, #f8edd4 8px, #f3e6cf 8px, #f3e6cf 16px);
+  border:2px solid #c2a67f;border-radius:16px;padding:14px 16px;max-width:960px;width:min(96vw,960px);
+  box-shadow:0 18px 40px #0003, inset 0 0 0 3px #fff6e2
+}
+.toast .q{font-size:24px;margin-bottom:10px;color:#2a2016}
+.toast .choices{display:flex;flex-wrap:wrap;gap:8px}
+.toast .choice{
+  padding:8px 12px;border-radius:12px;border:1px solid #b89367;
+  background:#fff6e2;color:#2a2016;cursor:pointer;box-shadow:0 2px 0 #d7bd95
+}
+.toast .choice:hover{filter:brightness(1.03)}
+.toast .choice.correct{background:#e6ffe8;border-color:#80d49c}
+.toast .choice.wrong{background:#ffe0e0;border-color:#ff9d9d}
+.toast .explain{font-size:14px;color:#3e2f1f;margin-top:6px}
+
+/* Overlay */
+.overlay{position:fixed;inset:0;display:grid;place-items:center;font-size:64px;color:#fff;-webkit-text-stroke:2px #000;pointer-events:none;text-shadow:0 8px 30px #0008}
+
+/* Tutorial bubble */
+.guide-box{position:fixed;bottom:60px;left:50px;display:none;align-items:flex-end;gap:12px;z-index:1000}
+.capy-avatar{width:96px;height:96px;border-radius:50%;background:#fff6e2;border:2px solid #c2a67f;padding:4px;object-fit:cover}
+.bubble{background:#fff6e2;color:#222;padding:12px 16px;border-radius:14px;box-shadow:0 6px 16px #0002, inset 0 0 0 3px #f6ead3;max-width:320px;position:relative;border:2px solid #c2a67f}
+.bubble .arrow-down{position:absolute;bottom:-8px;left:20px;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid #c2a67f}
+.bubble .arrow-down::after{content:"";position:absolute;left:-8px;top:-9px;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid #fff6e2}
+
+#btnStartWave { display: none !important; }
+
+/* การ์ดเลือกแมพ */
+.map-thumb{
+  width: 100%;
+  aspect-ratio: 3 / 2;      /* 600x400 = 3:2; ปรับได้ตามต้องการ */
+  object-fit: cover;        /* ครอบตัดให้เต็มกรอบ */
+  border-radius: 12px;
+  border: 1px solid #b89367;
+  display: block;
+}

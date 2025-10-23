@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <title>PhasaBattle — Educational Tower Defense</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Changa+One&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== MENU ===== -->
+  <audio id="bgMenu" src="audio/menu.mp3" loop preload="auto" autoplay></audio>
+  <section id="screen-menu" class="screen active">
+    <img class="menu-bg" src="img/gameMap.png" alt="" />
+    <div class="menu-center">
+      <h1 class="brand big">PHASABATTLE</h1>
+      <div class="menu-buttons">
+        <button id="btnMenuPlay" class="menu-btn primary">Play</button>
+        <button id="btnMenuTutorial" class="menu-btn">Tutorial</button>
+        <button id="btnMenuSettings" class="menu-btn">Settings</button>
+      </div>
+      <div class="credit">prototype for research/education</div>
+    </div>
+  </section>
+
+  <!-- ===== MAP SELECT ===== -->
+  <section id="screen-mapselect" class="screen">
+    <div class="menu-center">
+      <h2 class="brand">Choose a Map</h2>
+      <div class="settings" style="gap:14px; max-width:760px">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px">
+          <div style="display:grid; gap:8px; justify-items:center">
+            <img src="img/gameMap.png"  alt="Map 1" class="map-thumb" />
+            <button id="btnPickMap1" class="menu-btn primary">Play — Map 1</button>
+          </div>
+          <div style="display:grid; gap:8px; justify-items:center">
+            <img src="img/gameMap2.png" alt="Map 2" class="map-thumb" />
+            <button id="btnPickMap2" class="menu-btn primary">Play — Map 2</button>
+          </div>
+        </div>
+        <button id="btnBackFromMapSelect" class="menu-btn">Back</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SETTINGS ===== -->
+  <section id="screen-settings" class="screen">
+    <div class="menu-center">
+      <h2 class="brand">Settings</h2>
+      <div class="settings">
+        <label>อัตราคำถามอัตโนมัติ
+          <select id="selQuestionRate">
+            <option value="20">ทุก 20 วิ</option>
+            <option value="30" selected>ทุก 30 วิ</option>
+            <option value="45">ทุก 45 วิ</option>
+            <option value="0">ปิด</option>
+          </select>
+        </label>
+
+        <label>ระดับความยาก (ความเร็ว/เลือดศัตรู)
+          <select id="selDifficulty">
+            <option value="0.9">Easy</option>
+            <option value="1.0" selected>Normal</option>
+            <option value="1.2">Hard</option>
+          </select>
+        </label>
+
+        <label>รายได้ Passive (เหรียญ/10วิ)
+          <input id="inpPassiveIncome" type="number" min="0" max="50" value="6" />
+        </label>
+
+        <label>ชุดศัตรู
+          <select id="selEnemySet">
+            <option value="animals" selected>Animals (Chicken→Cat→Dog)</option>
+            <option value="slime">Slime (ช้าเลือดหนา)</option>
+            <option value="ghost">Ghost (เร็วแต่บาง)</option>
+          </select>
+        </label>
+
+        <label>ชุดยูนิตในร้าน
+          <select id="selUnitSet">
+            <option value="capy" selected>Capybara (3 ตัว)</option>
+          </select>
+        </label>
+      </div>
+
+      <button id="btnBackFromSettings" class="menu-btn">Back</button>
+    </div>
+  </section>
+
+  <!-- ===== GAME ===== -->
+  <section id="screen-game" class="screen">
+    <canvas id="game"></canvas>
+
+    <!-- HUD -->
+    <div class="hud top-right">
+      <div class="hud-chip">💰 <span id="coins">100</span></div>
+      <div class="hud-chip">❤️ <span id="hearts">10</span></div>
+      <div class="hud-chip">🌊 Wave <span id="wave">1</span></div>
+    </div>
+
+    <div class="floating-controls">
+      <button id="btnExitToMenu" class="btn">Exit</button>
+    </div>
+
+    <div id="dock" class="dock"></div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast" style="display:none"></div>
+
+    <!-- Overlays -->
+    <div id="gameOver" class="overlay" style="display:none">GAME OVER</div>
+    <div id="gameWin" class="overlay" style="display:none">YOU WIN!</div>
+
+    <!-- เพลงเกม (สองแมพ) -->
+    <audio id="bgGame"  src="audio/game.mp3"  loop preload="auto"></audio>  <!-- Map1 -->
+    <audio id="bgGame2" src="audio/game2.mp3" loop preload="auto"></audio>  <!-- Map2 -->
+  </section>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="js/appState.js"></script>
+
+  <script src="js/placementTilesData.js"></script>
+  <script src="js/waypoints.js"></script>
+
+  <script src="js/classes/Sprite.js"></script>
+  <script src="js/classes/Projectile.js"></script>
+  <script src="js/classes/Enemy.js"></script>
+  <script src="js/classes/PlacementTile.js"></script>
+  <script src="js/classes/Building.js"></script>
+
+  <script src="js/questions.grammar.js"></script>
+  <script src="js/questions.vocab.js"></script>
+
+  <script src="js/tutorialGuide.js"></script>
+  <script src="js/shop.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
