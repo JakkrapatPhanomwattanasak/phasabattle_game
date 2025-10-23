@@ -117,21 +117,10 @@ function enemyStatsBySet(w){
 
 // ===== Spawner: Chicken → Cat → Dog ตามลำดับความยาก =====
 function enemySpriteForWave(w){
-  if (w === 1)
-    return { sprite: 'img/enemies/Cute Chicken 2 walk.png', tile: 32, scale: 2.2 };
-  if (w === 2)
-    return { sprite: 'img/enemies/catWalk.png', tile: 48, scale: 1.8 };
-  if (w === 3)
-    return { sprite: 'img/enemies/dogWalk.png', tile: 48, scale: 1.8 };
-  // ถ้าเกิน wave 3 ให้สุ่มวน 3 แบบไปเรื่อย ๆ (ไม่งั้นจะว่าง)
-  const types = [
-    { sprite: 'img/enemies/Cute Chicken 2 walk.png', tile: 32, scale: 2.2 },
-    { sprite: 'img/enemies/catWalk.png', tile: 48, scale: 1.8 },
-    { sprite: 'img/enemies/dogWalk.png', tile: 48, scale: 1.8 },
-  ];
-  return types[(w - 1) % 3];
+  if (w <= 3) return { sprite:'img/enemies/Cute Chicken 2 walk.png', tile:32, scale:2.2 };
+  if (w <= 6) return { sprite:'img/enemies/catWalk.png', tile:48, scale:1.8 };
+  return { sprite:'img/enemies/dogWalk.png', tile:48, scale:1.8 };
 }
-
 
 function spawnWave(w) {
   const n = 6 + Math.floor(w * 1.3);
